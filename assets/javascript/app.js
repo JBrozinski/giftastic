@@ -1,4 +1,4 @@
-var btnList = ["dog", "cat", "snake"];
+var btnList = ["Arbor Day", "Leap Day", "National Donut Day"];
 
 displayButtons();
 
