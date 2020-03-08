@@ -19,7 +19,7 @@ function handleClick() {
   var queryURL =
     "https://api.giphy.com/v1/gifs/search?q=" +
     x +
-    "&api_key=atYF5CRPGzxpI7u52fM1vyCLTYUUrm7g&limit=10";
+    "&api_key=atYF5CRPGzxpI7u52fM1vyCLTYUUrm7g&limit=10&rating=pg";
   $.ajax({
     method: "GET",
     url: queryURL
