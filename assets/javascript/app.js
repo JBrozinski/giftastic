@@ -1,11 +1,15 @@
 var btnList = ["Arbor Day", "Leap Day", "National Donut Day"];
 
-displayButtons();
-
 $("#submit").on("click", function(event) {
   event.preventDefault();
-  var input = $("#input").val();
+  var input = $("#input")
+    .val()
+    .trim();
   console.log(input);
+  // var movie = $("#movie-input").val().trim();
+
+  btnList.push(input);
+  displayButtons();
 });
 
 function handleClick() {
@@ -29,6 +33,7 @@ function handleResponse(response) {
 function displayButtons() {
   // document.getElementById("buttons").innerHTML = "";
   $("#buttons").empty();
+
   for (var i = 0; i < btnList.length; i++) {
     // var btn = document.createElement("button");
     // btn.textContent = btnList[i];
@@ -44,3 +49,5 @@ function displayButtons() {
     $("#buttons").append(btn);
   }
 }
+
+displayButtons();
