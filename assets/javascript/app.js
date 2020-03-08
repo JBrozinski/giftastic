@@ -1,4 +1,5 @@
 var btnList = ["Arbor Day", "Leap Day", "National Donut Day"];
+var gifsDiv = $("#gifsDiv");
 
 $("#submit").on("click", function(event) {
   event.preventDefault();
@@ -29,7 +30,11 @@ function handleClick() {
 // var response = data (because data is passed in function call)
 function handleResponse(response) {
   console.log(response);
+  var rating = response;
+  var pOne = $("<div>").text("Rating: " + rating);
+  gifsDiv.append(pOne);
 }
+
 function displayButtons() {
   // document.getElementById("buttons").innerHTML = "";
   $("#buttons").empty();
