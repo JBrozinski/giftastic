@@ -1,5 +1,6 @@
-var btnList = ["Arbor Day", "Leap Day", "National Donut Day"];
+var btnList = ["thrilled", "bored", "happy"];
 var gifsDiv = $("#gifsDiv");
+var ratDiv = $("#ratDiv");
 
 $("#submit").on("click", function(event) {
   event.preventDefault();
@@ -18,21 +19,26 @@ function handleClick() {
   var queryURL =
     "https://api.giphy.com/v1/gifs/search?q=" +
     x +
-    "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+    "&api_key=atYF5CRPGzxpI7u52fM1vyCLTYUUrm7g&limit=10";
   $.ajax({
     method: "GET",
     url: queryURL
   }).then(function(data) {
     handleResponse(data);
   });
+  console.log(queryURL);
 }
 
 // var response = data (because data is passed in function call)
 function handleResponse(response) {
   console.log(response);
-  var rating = response;
+  var rating = response.data[1].rating;
+  var gif = response.data[1].images.original.url;
   var pOne = $("<div>").text("Rating: " + rating);
-  gifsDiv.append(pOne);
+  var pTwo = $("<img>").attr("src", gif);
+  ratDiv.append(pOne);
+  gifsDiv.append(pTwo);
+  console.log(gif);
 }
 
 function displayButtons() {
