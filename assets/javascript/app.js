@@ -15,6 +15,7 @@ $("#submit").on("click", function(event) {
 });
 
 function handleClick() {
+  $("#gifsDiv").empty();
   var x = $(this).data("search");
   var queryURL =
     "https://api.giphy.com/v1/gifs/search?q=" +
@@ -32,15 +33,19 @@ function handleClick() {
 // var response = data (because data is passed in function call)
 function handleResponse(response) {
   console.log(response);
+  for (var i = 0; i < response.data.length; i++) {
+    var rating = response.data[i].rating;
+    var gif = response.data[i].images.original.url;
+    var stillGif = response.data[i].images.original_still.url;
+    var ratingDiv = $("<div>").text("Rating: " + rating);
+    var gifImg = $("<img>").attr("src", gif);
 
-  var rating = response.data[0].rating;
-  var gif = response.data[0].images.original.url;
-  var stillGif = response.data[0].images.original_still.url;
-  var ratingDiv = $("<div>").text("Rating: " + rating);
-  var gifImg = $("<img>").attr("src", gif);
+    gifsDiv.append(gifImg);
+    gifsDiv.append(ratingDiv);
+  }
 
-  gifsDiv.append(gifImg);
-  gifsDiv.append(ratingDiv);
+  // gifsDiv.append(gifImg);
+  // gifsDiv.append(ratingDiv);
   console.log(gif);
 }
 
