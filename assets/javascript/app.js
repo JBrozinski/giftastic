@@ -32,12 +32,15 @@ function handleClick() {
 // var response = data (because data is passed in function call)
 function handleResponse(response) {
   console.log(response);
-  var rating = response.data[1].rating;
-  var gif = response.data[1].images.original.url;
-  var pOne = $("<div>").text("Rating: " + rating);
-  var pTwo = $("<img>").attr("src", gif);
-  ratDiv.append(pOne);
-  gifsDiv.append(pTwo);
+
+  var rating = response.data[0].rating;
+  var gif = response.data[0].images.original.url;
+  var stillGif = response.data[0].images.original_still.url;
+  var ratingDiv = $("<div>").text("Rating: " + rating);
+  var gifImg = $("<img>").attr("src", gif);
+
+  gifsDiv.append(gifImg);
+  gifsDiv.append(ratingDiv);
   console.log(gif);
 }
 
@@ -62,3 +65,12 @@ function displayButtons() {
 }
 
 displayButtons();
+
+// $("img").on("click", function() {
+//   if ("<img>" === stillGif) {
+//     $(this).attr("src", gif);
+
+//   } else {
+//     $(this).attr("src", stillGif);
+
+//   }
