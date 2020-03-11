@@ -42,12 +42,14 @@ function handleResponse(response) {
     var stillGifImg = $("<img>").attr("src", stillGif);
     gifsDiv.append(stillGifImg);
     gifsDiv.append(ratingDiv);
+    stillGifImg.attr("data-state", "still");
+    gifImg.attr("data-state", "animate");
   }
   $("img").on("click", function() {
     $(this).empty();
     gifsDiv.append(gifImg);
     console.log("you clicked a still gif");
-
+    var state = $(this).attr("data-state");
     if ("<img>" === gifImg) {
       console.log("it won't move");
       // } else {
