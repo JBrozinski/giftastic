@@ -39,8 +39,9 @@ function handleResponse(response) {
     var stillGif = response.data[i].images.original_still.url;
     var ratingDiv = $("<div>").text("Rating: " + rating);
     var gifImg = $("<img>").attr("src", gif);
+    var stillGifImg = $("<img>").attr("src", stillGif);
 
-    gifsDiv.append(gifImg);
+    gifsDiv.append(stillGifImg);
     gifsDiv.append(ratingDiv);
   }
 
