@@ -40,27 +40,32 @@ function handleResponse(response) {
     var ratingDiv = $("<div>").text("Rating: " + rating);
     var gifImg = $("<img>").attr("src", gif);
     var stillGifImg = $("<img>").attr("src", stillGif);
-
     gifsDiv.append(stillGifImg);
     gifsDiv.append(ratingDiv);
   }
+  $("img").on("click", function() {
+    $(this).empty();
+    gifsDiv.append(gifImg);
+    console.log("you clicked a still gif");
+
+    if ("<img>" === gifImg) {
+      console.log("it won't move");
+      // } else {
+    }
+  });
 
   // gifsDiv.append(gifImg);
   // gifsDiv.append(ratingDiv);
   console.log(gif);
 }
 
+// animate gifs with click event
+
 function displayButtons() {
   // document.getElementById("buttons").innerHTML = "";
   $("#buttons").empty();
 
   for (var i = 0; i < btnList.length; i++) {
-    // var btn = document.createElement("button");
-    // btn.textContent = btnList[i];
-    // btn.setAttribute("data-search", btnList[i]);
-
-    // document.getElementById("buttons").appendChild(btn);
-
     var btn = $("<button>")
       .text(btnList[i])
       .attr("data-search", btnList[i])
@@ -71,12 +76,3 @@ function displayButtons() {
 }
 
 displayButtons();
-
-// $("img").on("click", function() {
-//   if ("<img>" === stillGif) {
-//     $(this).attr("src", gif);
-
-//   } else {
-//     $(this).attr("src", stillGif);
-
-//   }
